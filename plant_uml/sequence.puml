@@ -1,0 +1,49 @@
+
+
+
+'pub -> broker : publish(topic)
+'broker -> sub : message 
+'sub -> broker : subscribe(topic)
+'broker -> sub : status
+
+'sub -> broker : subscribe(topic)
+'broker -> sub : status
+'pub -> broker : publish(topic)
+'broker -> sub : message 
+
+'pub -> broker : publish(topic)
+'broker -> sub : status
+'sub -> broker : subscribe(topic)
+'broker -> sub : message 
+
+'sub -> broker : subscribe(topic)
+'broker -> sub : status
+'pub -> broker : publish(topic)
+'broker -> sub : message 
+
+'sub -> broker : subscribe(topic)
+'broker -> sub : status 
+'pub -> broker : publish(topic)
+'broker -> sub : message
+
+'box "pub, broker, sub" #LightBlue
+'end box
+
+
+@startuml
+
+scale 2.5
+
+
+participant 배포자 as pub
+participant 브로커 as broker
+participant 구독자 as sub
+
+
+sub -> broker : subscribe(topic)
+broker -> sub : status 
+pub -> broker : publish(topic,message)
+broker -> sub : message
+@enduml
+
+

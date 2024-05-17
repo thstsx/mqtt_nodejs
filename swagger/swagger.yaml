@@ -1,0 +1,207 @@
+# # openapi: 3.0.0
+# # info:
+# #   title: MQTT API
+# #   description: API for interacting with the MQTT broker
+# #   version: 1.0.0
+# # paths:
+# #   /subscribe:
+# #     post:
+# #       summary: Subscribe to a topic
+# #       parameters:
+# #         - name: topic
+# #           in: query
+# #           required: true
+# #           description: The topic to subscribe to
+# #           schema:
+# #             type: string
+# #       responses:
+# #         '200':
+# #           description: Successfully subscribed
+# #         '400':
+# #           description: Invalid topic
+# #   /unsubscribe:
+# #     post:
+# #       summary: Unsubscribe from a topic
+# #       parameters:
+# #         - name: topic
+# #           in: query
+# #           required: true
+# #           description: The topic to unsubscribe from
+# #           schema:
+# #             type: string
+# #       responses:
+# #         '200':
+# #           description: Successfully unsubscribed
+# #         '400':
+# #           description: Invalid topic
+# #   /check-connection:
+# #     get:
+# #       summary: Check connection status with MQTT broker
+# #       responses:
+# #         '200':
+# #           description: Connection status retrieved successfully
+# # ----------------------------------------------------------------------------
+# # openapi: 3.0.0
+# # info:
+# #   title: MQTT API
+# #   description: API for interacting with the MQTT broker
+# #   version: 1.0.0
+# # servers:
+# #   - url: http://localhost:30033/api/v1
+# # paths:
+# #   /subscriber/check-connection:
+# #     get:
+# #       summary: Check connection status with MQTT broker
+# #       responses:
+# #         '200':
+# #           description: Connection status retrieved successfully
+# # --------------------------------------------------------------------
+# openapi: 3.0.0
+# info:
+#   title: MQTT API
+#   description: API for interacting with the MQTT broker
+#   version: 1.0.0
+# servers:
+#   - url: http://localhost:30033/api/v1
+
+# paths:
+#   # /subscribe:
+#   #   post:
+#   #     summary: Subscribe to an MQTT topic
+#   #     requestBody:
+#   #       content:
+#   #         application/json:
+#   #           schema:
+#   #             type: object
+#   #             properties:
+#   #               topic:
+#   #                 type: string
+#   #                 description: The MQTT topic to subscribe to
+#   #             required:
+#   #               - topic
+#   #     responses:
+#   #       '200':
+#   #         description: Successfully subscribed
+#   #       '400':
+#   #         description: Invalid request body
+
+#   # /unsubscribe:
+#   #   post:
+#   #     summary: Unsubscribe from an MQTT topic
+#   #     requestBody:
+#   #       content:
+#   #         application/json:
+#   #           schema:
+#   #             type: object
+#   #             properties:
+#   #               topic:
+#   #                 type: string
+#   #                 description: The MQTT topic to unsubscribe from
+#   #             required:
+#   #               - topic
+#   #     responses:
+#   #       '200':
+#   #         description: Successfully unsubscribed
+#   #       '400':
+#   #         description: Invalid request body
+
+#   # /api/v1/connection-status:
+#   #   get:
+#   #     summary: Check MQTT Connection Status
+#   #     description: Check if the application is currently connected to the MQTT broker.
+#   #     responses:
+#   #       '200':
+#   #         description: Successful operation
+#   #         content:
+#   #           application/json:
+#   #             schema:
+#   #               type: object
+#   #               properties:
+#   #                 connected:
+#   #                   type: boolean
+#   #                   description: Indicates if the application is connected to the MQTT broker.
+#   /api/v1/connection-status:
+#     get:
+#       summary: Check MQTT Connection Status
+#       description: Check if the application is currently connected to the MQTT broker.
+#       responses:
+#         '200':
+#           description: Successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 type: object
+#                 properties:
+#                   connected:
+#                     type: boolean
+#                     description: Indicates if the application is connected to the MQTT broker.
+#         '500':
+#           description: Internal server error
+openapi: 3.0.0
+info:
+  title: MQTT API
+  description: API for interacting with the MQTT broker
+  version: 1.0.0
+servers:
+  - url: http://localhost:30033/api/v1
+
+paths:
+  # /subscribe:
+  #   post:
+  #     summary: Subscribe to a topic
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               topic:
+  #                 type: string
+  #                 description: The MQTT topic to subscribe to
+  #             required:
+  #               - topic
+  #     responses:
+  #       '200':
+  #         description: Successfully subscribed
+  #       '400':
+  #         description: Invalid request body
+
+  # /unsubscribe:
+  #   post:
+  #     summary: Unsubscribe from a topic
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               topic:
+  #                 type: string
+  #                 description: The MQTT topic to unsubscribe from
+  #             required:
+  #               - topic
+  #     responses:
+  #       '200':
+  #         description: Successfully unsubscribed
+  #       '400':
+  #         description: Invalid request body
+
+  /connection-status:
+    get:
+      summary: Check MQTT Connection Status
+      description: Check if the application is currently connected to the MQTT broker.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connected:
+                    type: boolean
+                    description: Indicates if the application is connected to the MQTT broker.
+        '500':
+          description: Internal server error

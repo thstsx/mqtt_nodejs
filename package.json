@@ -1,0 +1,31 @@
+{
+  "name": "mqtt",
+  "version": "1.0.0",
+  "description": "A Node.js Express Web application that uses the mqtt.js",
+  "main": "index.js",
+  "scripts": {
+    "prod": "node app.js",
+    "dev": "nodemon app.js",
+    "serve": "vue-cli-service serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "mqtt": "^4.3.8",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "vue": "^3.4.21",
+    "ws": "^8.16.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli": "^5.0.8",
+    "nodemon": "^2.0.22"
+  }
+}

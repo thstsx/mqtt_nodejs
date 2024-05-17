@@ -1,0 +1,21 @@
+@startuml
+
+scale 10
+
+[public/subscriber] -> [routes/subscriber]
+[subscriberController] <- [routes/subscriber]
+[subscriberController] -> [views/subscriber.ejs] : subscribe
+
+
+[subscriberController] -> [views/subscriber.ejs] : subscribe topic
+[subscribeController] -> [/service/mqttService] : connect
+[/service/mqttService] -> [views/subscriber.ejs] : status (green if normal)
+
+[routes/publisher] -> [public/publisher] 
+[routes/publisher] -> [publisherController]
+
+
+[publisher.ejs] -> [publishMQTTMessage] : publish 
+
+
+@enduml

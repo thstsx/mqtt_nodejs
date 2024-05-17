@@ -1,0 +1,29 @@
+@startuml
+
+scale 2.5
+
+participant "브라우저(배포)" as browser2
+participant 브로커 as mqtt
+participant 서비스 as service
+participant 컨트롤러 as controller
+participant 라우터 as router
+participant "브라우저(구독)" as browser
+
+browser -> router : subscribe\n(topic)
+router -> controller
+controller -> service
+service -> mqtt
+mqtt -> service : \ncallback\n(connect or close)
+service -> controller
+controller -> router
+router -> browser : status\n(green or red)
+browser2 -> router : publish\n(topic, message)
+router -> controller
+controller -> service
+service -> mqtt 
+mqtt -> service : \ncallback\n(message)
+service -> controller
+controller -> router
+router -> browser : message
+
+@enduml
